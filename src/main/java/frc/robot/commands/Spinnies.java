@@ -12,13 +12,13 @@ import frc.robot.subsystems.Wheelies;
 public class Spinnies extends CommandBase {
 
     private final Wheelies wheelies;
-    private DoubleSupplier leftPwr;
-    private DoubleSupplier rightPwr;
+    private final DoubleSupplier forwardSpeed;
+    private final DoubleSupplier rotationSpeed;
 
-    public Spinnies(Wheelies wheelies, DoubleSupplier leftPwr, DoubleSupplier rightPwr) {
+    public Spinnies(Wheelies wheelies, DoubleSupplier forwardSpeed, DoubleSupplier rotationSpeed) {
         this.wheelies = wheelies;
-        this.leftPwr = leftPwr;
-        this.rightPwr = rightPwr;
+        this.forwardSpeed = forwardSpeed;
+        this.rotationSpeed = rotationSpeed;
 
         addRequirements(wheelies);
     }
@@ -28,8 +28,11 @@ public class Spinnies extends CommandBase {
 
     @Override
     public void execute() {
-        wheelies.setLeftPower(leftPwr.getAsDouble());
-        wheelies.setRightPower(rightPwr.getAsDouble());
+        var left_output = forwardSpeed.getAsDouble() + rotationSpeed.getAsDouble();
+        var right_output = forwardSpeed.getAsDouble() - rotationSpeed.getAsDouble();
+
+        wheelies.setLeftPower(left_output);
+        wheelies.setRightPower(right_output);
 
     }
 

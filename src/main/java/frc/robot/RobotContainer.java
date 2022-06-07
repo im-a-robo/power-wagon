@@ -1,5 +1,7 @@
 package frc.robot;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -13,13 +15,15 @@ public class RobotContainer {
     private final Joystick driverLeft = new Joystick(0);
     private final Joystick driverRight = new Joystick(1);
 
+    private DoubleSupplier forwardSpeed = MathUtil.applyDeadband(, deadband)
+
     public RobotContainer() {
         configureButtonBindings();
         configureDefaultCommands();
     }
 
     public void configureDefaultCommands() {
-        wheelies.setDefaultCommand(new Spinnies(wheelies, () -> MathUtil.applyDeadband(driverLeft.getY(), 0.2), () -> MathUtil.applyDeadband(driverRight.getY(), 0.2)));
+        wheelies.setDefaultCommand(new Spinnies(wheelies, MathUtil, rotationSpeed));
     }
 
     private void configureButtonBindings() {

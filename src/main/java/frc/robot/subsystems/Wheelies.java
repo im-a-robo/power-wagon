@@ -47,4 +47,5 @@ public class Wheelies extends SubsystemBase {
     public void setRightPower(double power) {
         right1.set(power);
     }
+
 }
