@@ -17,7 +17,7 @@ public class RobotContainer {
     private final Joystick driverRight = new Joystick(1);
     private final XboxController driver =  new XboxController(0);
 
-    private DoubleSupplier forwardSpeed = MathUtil.applyDeadband(, deadband
+    private DoubleSupplier forwardSpeed = () -> MathUtil.applyDeadband(driver.getRightTriggerAxis(), 0.05) - MathUtil.applyDeadband(driver.getLeftTriggerAxis(), 0.05);
 
     public RobotContainer() {
         configureButtonBindings();
@@ -25,7 +25,7 @@ public class RobotContainer {
     }
 
     public void configureDefaultCommands() {
-        wheelies.setDefaultCommand(new Spinnies(wheelies, MathUtil, rotationSpeed));
+        wheelies.setDefaultCommand(new Spinnies(wheelies, forwardSpeed, () -> driver.getRightX()));
     }
 
     private void configureButtonBindings() {
