@@ -4,6 +4,7 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.Spinnies;
 import frc.robot.subsystems.Wheelies;
@@ -14,8 +15,9 @@ public class RobotContainer {
 
     private final Joystick driverLeft = new Joystick(0);
     private final Joystick driverRight = new Joystick(1);
+    private final XboxController driver =  new XboxController(0);
 
-    private DoubleSupplier forwardSpeed = MathUtil.applyDeadband(, deadband)
+    private DoubleSupplier forwardSpeed = MathUtil.applyDeadband(, deadband
 
     public RobotContainer() {
         configureButtonBindings();
