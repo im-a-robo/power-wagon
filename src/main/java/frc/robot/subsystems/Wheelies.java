@@ -32,6 +32,14 @@ public class Wheelies extends SubsystemBase {
         right2.setInverted(true);
         right3.setInverted(true);
 
+        right1.setClosedLoopRampRate(0.2);
+        right2.setClosedLoopRampRate(0.2);
+        right3.setClosedLoopRampRate(0.2);
+        
+        left1.setClosedLoopRampRate(0.2);
+        left2.setClosedLoopRampRate(0.2);
+        left3.setClosedLoopRampRate(0.2);
+
         CommandScheduler.getInstance().registerSubsystem(this);
     }
 
